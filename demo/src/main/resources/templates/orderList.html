@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common.html :: source"></th:block>
+</head>
+<body>
+
+<th:block th:include="common.html :: header"></th:block>
+
+<div class="i_bg bg_color">
+    <div class="m_content">
+
+        <div class="m_left">
+            <div class="left_n">management center</div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">order</div>
+                <ul>
+                    <li><a href="#" >my order</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg2">vip center</div>
+                <ul>
+                    <li><a href="/userInfo" >user information</a></li>
+                    <li><a href="/user/addressList" >address management</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="m_right" id="content">
+            <p></p>
+            <p></p>
+            <div class="mem_tit">order list</div>
+            <table border="0" class="order_tab"
+                   style="width: 930px; text-align: center; margin-bottom: 30px;"
+                   cellspacing="0" cellpadding="0">
+                <tbody>
+
+                <!--                <div th:each="order:${list}">-->
+                <!--                    <tr class="td_bg">-->
+                <!--                        <td th:text="'userName:'+${order.loginName}"></td>-->
+                <!--                        <td th:text="'orderNumber:'+${order.serialnumber}"></td>-->
+                <!--                        <td th:text="'address:'+${order.userAddress}"></td>-->
+                <!--                        <td th:text="'$'+${order.cost}"></td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td colspan="4">-->
+                <!--                            <table border="0" class="order_tab"-->
+                <!--                                   style="width: 930px; text-align: center; margin-bottom: 30px;"-->
+                <!--                                   cellspacing="0" cellpadding="0">-->
+                <!--                                <tbody>-->
+                <!--                                <tr>-->
+                <!--                                    <td width="20%">product name</td>-->
+                <!--                                    <td width="20%">product photo</td>-->
+                <!--                                    <td width="25%">quantity</td>-->
+                <!--                                    <td width="25%">price</td>-->
+                <!--                                    <td width="25%">total price</td>-->
+                <!--                                </tr>-->
+
+                <!--                                <tr th:each="orderDetail:${order.orderDetailVOList}">-->
+                <!--                                    <td th:text="${orderDetail.name}"></td>-->
+                <!--                                    <td>-->
+                <!--                                        <img th:src="'/images/'+${orderDetail.fileName}" width="50"-->
+                <!--                                             height="50">-->
+                <!--                                    </td>-->
+                <!--                                    <td th:text="${orderDetail.quantity}"></td>-->
+                <!--                                    <td th:text="${orderDetail.price}"></td>-->
+                <!--                                    <td th:text="${orderDetail.cost}"></td>-->
+                <!--                                </tr>-->
+                <!--                                </tbody>-->
+                <!--                            </table>-->
+                <!--                        </td>-->
+                <!--                    </tr>-->
+
+                <!--                </div>-->
+
+
+                <div th:each="orders:${orderList}">
+                    <tr class="td_bg">
+                        <td th:text="'userName:'+${orders.loginName}"></td>
+                        <td th:text="'orderNumber:'+${orders.serialnumber}"></td>
+                        <td th:text=" 'address:'+${orders.userAddress}"></td>
+                        <td th:text="'$'+${orders.cost}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table border="0" class="order_tab"
+                                   style="width: 930px; text-align: center; margin-bottom: 30px;"
+                                   cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td width="20%">productName</td>
+                                    <td width="20%">ProductPhoto</td>
+                                    <td width="25%">quantity</td>
+                                    <td width="25%">price</td>
+                                    <td width="25%">total price</td>
+                                </tr>
+
+                                <tr th:each="orderDetail:${orders.getOrderDetailList()}">
+                                    <td th:text="${orderDetail.name}"></td>
+                                    <td>
+                                        <img th:src="'/images/'+${orderDetail.fileName}" width="50"
+                                             height="50">
+                                    </td>
+                                    <td th:text="${orderDetail.quantity}"></td>
+                                    <td th:text="${orderDetail.price}"></td>
+                                    <td th:text="${orderDetail.cost}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                </div>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<th:block th:include="common.html :: footer"></th:block>
+<th:block th:include="common.html :: permit"></th:block>
+
+</body>
+</html>
